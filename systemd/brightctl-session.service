@@ -1,0 +1,13 @@
+# ~/.config/systemd/user/brightctl-session.service
+[Unit] 
+Description=Run brightctl script after GNOME session login or unlock 
+After=default.target
+
+[Service] 
+Type=oneshot 
+ExecStart=/bin/bash /home/%u/.local/bin/run_brightctl.sh 
+ExecStartPre=/usr/bin/sleep 30
+RemainAfterExit=no
+
+[Install] 
+WantedBy=default.target

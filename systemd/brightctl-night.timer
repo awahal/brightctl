@@ -1,0 +1,12 @@
+# ~/.config/systemd/user/brightctl-night.timer
+[Unit]
+Description=Run brightctl.sh 40 1800 at 20:00
+
+[Timer]
+OnCalendar=*-*-* 20:00:00
+Persistent=false
+RandomizedDelaySec=300
+Unit=brightctl-night.service
+
+[Install]
+WantedBy=timers.target
