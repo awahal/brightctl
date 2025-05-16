@@ -1,5 +1,5 @@
 # brightctl
-Automatic brightness control for Linux desktop pc display monitors using ddcutil
+Automatically scheduled brightness control for Linux desktop pc display monitors using ddcutil
 
 ## about
 * Work In Progress!
@@ -77,4 +77,5 @@ defaults if no time or display arguments given:
 * adjustable number of steps
 * adjustable sleep delay
 * adjustable morning and evening times
+  * follow sunset/sunrise
 * morning needs gradual brightness change
