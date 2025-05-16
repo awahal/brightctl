@@ -34,7 +34,7 @@ I wanted to automatically and gently lower the brightness of my pc monitors in t
 * changes Display 1 brightness to 50 over 600 seconds (10 mins)
 
 ```brightctl.sh 100 0 2```
-*if brightctl.sh in .local/bin or in $path*
+(*omit "./" if brightctl.sh is in current work dir, .local/bin, or in $path*)
 * sets Display 2 brightness to 100 instantly
 
 ```brightctl.sh 100```
