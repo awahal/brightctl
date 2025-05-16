@@ -2,6 +2,8 @@
 [Unit] 
 Description=Run brightctl script after GNOME session login or unlock 
 After=default.target
+#After=graphical-session.target 
+#may need to set as graphical-session.target to run after resume-unlock in GNOME session
 
 [Service] 
 Type=oneshot 
@@ -11,3 +13,4 @@ RemainAfterExit=no
 
 [Install] 
 WantedBy=default.target
+#WantedBy=graphical-session.target
