@@ -28,8 +28,8 @@
   * Changes Display 2 brightness to 100 instantly
 
   behavior:
-    * ```delay=30``` 30 seconds between brightness change steps
-    ** could be lowered for smoother changes or increased for more gradual changes
+  * ```delay=30``` 30 seconds between brightness change steps
+  ** could be lowered for smoother changes or increased for more gradual changes
 
   defaults if no time or display arguments given:
   * time = 0
