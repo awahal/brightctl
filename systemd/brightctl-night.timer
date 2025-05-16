@@ -1,6 +1,6 @@
 # ~/.config/systemd/user/brightctl-night.timer
 [Unit]
-Description=Run brightctl.sh 40 1800 at 20:00
+Description=Run brightctl.sh at 20:00 to lower display brightness to 33 in 30 minutes 
 
 [Timer]
 OnCalendar=*-*-* 20:00:00
