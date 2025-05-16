@@ -1,6 +1,6 @@
 # ~/.config/systemd/user/brightctl-night.service
 [Unit]
-Description=Decrease display brightness to 33 over 30 minutes using brightctl.sh
+Description=Decrease display brightness to 33 over a 30 minute period using brightctl.sh
 After=default.target
 
 [Service]
