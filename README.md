@@ -7,7 +7,7 @@ Automatic brightness control for Linux desktop pc display monitors using ddcutil
 * wrapper for ddcutil to set brightness instantly or gradually
 * systemd units to automate changing brightness at set morning and evening times
 
-# dependencies
+## dependencies
 * ddcutil
   * Ubuntu and Debian systems: ```sudo apt install ddcutil```
 * monitor that supports VCP feature code 10 (brightness)
@@ -15,7 +15,7 @@ Automatic brightness control for Linux desktop pc display monitors using ddcutil
   * ```ddcutil capabilities --display 1``` (or other display number) and look for verify code 10 "brightness" is in list
   * ```ddcutil getvcp 10 --display 1``` to check if ddcutil can read display brightness
 
-# install
+## install
 * move brightctl.sh and run_brightctl.sh to ~/.local/bin and make executable (chmod +x)
 * move systemd files to your local user systemd folder ~/.config/systemd/user
 * install systemd units as user: 
@@ -28,8 +28,8 @@ Automatic brightness control for Linux desktop pc display monitors using ddcutil
   systemctl --user enable brightctl-session.service
   ```
 
-# usage
-## brightctl.sh
+## usage
+### brightctl.sh
 * ```./brightctl.sh brightness time display```
   
   brightness = time period in seconds over which to reduce brightness
@@ -57,20 +57,20 @@ defaults if no time or display arguments given:
 * time = 0
 * display = 1 and 2 (currently hard-coded to display_ids=(1 2) in script, may cause issues if not specified and 2 displays are not detected)
 
-## run_brightctl.sh
+### run_brightctl.sh
 * script to handle setting brightness at boot or resuming from suspend
 * current values: 8am brightness = 100, 8pm brightness = 33, 
 * behavior: immediately sets display brightness to 100 if ran after 8am (booting up PC in morning)
 * immediately sets display brightness to 33 if ran after 8pm (resuming PC from sleep at night)
 
-## systemd units
+### systemd units
 * brightctl-(day/night).timer runs brightctl-(day/night).service
 * timers run at time: ```OnCalendar=*-*-* 08:00:00```
 * brightctl-day.service executes: brightctl.sh 100 (instantly set monitors to 100 at 8am)
 * brightctl-night.service executes: brightctl.sh 33 1800 (gradually sets displays' brightness to 33 over 30 minutes)
 * brightctl-session.service: adjusts brightness display at boot or login by executing run_brightctl.sh
 
-### todo:
+## todo:
 * argparsing
 * multiple monitor input handling
 * adjustable sleep delay after ddcutil commands
