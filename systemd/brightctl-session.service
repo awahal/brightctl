@@ -1,9 +1,9 @@
 # ~/.config/systemd/user/brightctl-session.service
 [Unit] 
-Description=Run brightctl script after GNOME session login or unlock 
+Description=Set display brightness according to time after session login or unlock using run_brightctl.sh 
 After=default.target
-#After=graphical-session.target 
-#may need to set as graphical-session.target to run after resume-unlock in GNOME session
+# After=graphical-session.target 
+# may need to set as graphical-session.target to run after resume-unlock in GNOME session
 
 [Service] 
 Type=oneshot 
@@ -13,4 +13,4 @@ RemainAfterExit=no
 
 [Install] 
 WantedBy=default.target
-#WantedBy=graphical-session.target
+# WantedBy=graphical-session.target
