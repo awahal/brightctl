@@ -1,7 +1,7 @@
 # ~/.config/systemd/user/brightctl-day.service
 [Unit]
 Description=Run brightctl.sh with 100 at 08:00
-After=multi-user.target
+After=default.target
 
 [Service]
 Type=oneshot
