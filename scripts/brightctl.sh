@@ -1,8 +1,10 @@
 #!/bin/bash
-# usage: display-control.sh brightness [time] [display]
+# usage: brightctl.sh brightness [time] [display]
 # brightness must be between 0-100
 # time period to change brightness in seconds (optional, default: 0)
-# display is optional (default: all monitors, 1 and 2)
+# display is optional (default_display set to 1)
+
+default_display=1
 
 # Check if at least one argument is provided
 if [ $# -lt 1 ]; then
@@ -34,7 +36,8 @@ if [ -n "$3" ]; then
     fi
     display_ids=("$3")
 else
-    display_ids=(1 2)
+    display_ids=("$default_display")
+    #display_ids=(1 2)
 fi
 
 # Get time from second argument or use default (0 for instant change)
