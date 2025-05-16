@@ -1,7 +1,7 @@
 # ~/.config/systemd/user/brightctl-night.service
 [Unit]
 Description=Run brightctl.sh 40 1800 at 20:00
-After=multi-user.target
+After=default.target
 
 [Service]
 Type=oneshot
