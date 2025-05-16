@@ -1,6 +1,6 @@
 # ~/.config/systemd/user/brightctl-day.service
 [Unit]
-Description=Run brightctl.sh to raise display brightness to 100 immediately
+Description=Increase display brightness to 100 immediately using brightctl.sh
 After=default.target
 
 [Service]
