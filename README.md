@@ -45,8 +45,8 @@ I wanted to automatically and gently lower the brightness of my pc monitors in t
 
 #### dependencies
 * ddcutil
-* Ubuntu and Debian systems: ```sudo apt install ddcutil```
- * monitor that supports VCP feature code 0x10 (brightness)
+  * Ubuntu and Debian systems: ```sudo apt install ddcutil```
+* monitor that supports VCP feature code 0x10 (brightness)
 * ```ddcutil detect``` to view all detected displays
 * ```ddcutil capabilities --display 1``` *or other display*
  * ```Feature: 10 (Brightness)``` should be listed under ```VCP Features:```
