@@ -16,16 +16,16 @@ Automatic brightness control for Linux desktop pc display monitors using ddcutil
   * ```ddcutil getvcp 10 --display 1``` to check if ddcutil can read display brightness
 
 ## install
-* move brightctl.sh and run_brightctl.sh to ~/.local/bin and make executable (chmod +x)
-* move systemd files to your local user systemd folder ~/.config/systemd/user
+* Run ```./install.sh```
+  
+#### manual steps:
+* move brightctl.sh and run_brightctl.sh to ~/.local/bin and make executable (chmod 755)
+* move systemd files to your local user systemd folder ~/.config/systemd/user (chmod 644)
 * install systemd units as user: 
   ```
   systemctl --user daemon-reload
-  systemctl --user enable brightctl-day.service
-  systemctl --user enable brightctl-day.timer
-  systemctl --user enable brightctl-night.service
-  systemctl --user enable brightctl-night.timer
-  systemctl --user enable brightctl-session.service
+  systemctl --user enable brightctl-day.timer brightctl-night.timer brightctl-session.service
+  systemctl --user start brightctl-day.timer brightctl-night.timer
   ```
 
 ## usage
