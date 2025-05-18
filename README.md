@@ -43,10 +43,8 @@ I wanted to automatically and gently lower the brightness of my pc monitors in t
 ```brightctl.sh 25 3600```
 * sets Default Display (Display 1) brightness to 25 gradually over 30 minutes
 
-#### dependencies
-```
-ddcutil
-```
+#### dependencies:
+```ddcutil```
 * Ubuntu and Debian systems: ```sudo apt install ddcutil```
 
 monitor that supports VCP feature code 0x10 (brightness)
@@ -79,7 +77,7 @@ rm ~/.config/systemd/user/brightctl*
 rm ~/.local/bin/*brightctl.sh
 ```
 
-## program behavior and control:
+## program behavior and control
 ##### brightctl.sh:
 main script that uses ddcutil to change display brightness
 
@@ -103,7 +101,7 @@ defaults if no time or display arguments given:
 * behavior: immediately sets display brightness to 100 if ran after 8am (booting up PC in morning)
 * immediately sets display brightness to 33 if ran after 8pm (resuming PC from sleep at night)
 
-#### systemd units
+#### systemd units:
 * brightctl-(day/night).timer runs brightctl-(day/night).service
 * timers run at time: ```OnCalendar=*-*-* 08:00:00```
 * brightctl-day.service executes: brightctl.sh 100 (instantly set monitors to 100 at 8am)
@@ -126,7 +124,3 @@ ideas:
 - [ ] auto-dim when system is idle
 - [ ] automatically follow sunset/sunrise
 - [ ] follow system light/dark theme schedule
-
-
-#### License
-MIT License Attached. Not liable if your screen or gpu catches fire
