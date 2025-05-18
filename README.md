@@ -15,7 +15,7 @@ I wanted to automatically and gently lower the brightness of my pc monitors in t
 :warning: **Warning! Black Screen/No Brightness:** Before setting brightness to 0, test low brightness values (0-100) for screen visibility 
 * Use of monitor controls and on-screen display menu may be necessary to raise brightness
 
-#### brightctl.sh
+### brightctl.sh:
 ```
 ./brightctl.sh <brightness> [time] [display]
 ```
@@ -29,7 +29,7 @@ I wanted to automatically and gently lower the brightness of my pc monitors in t
 * default display numbering starts at 1
 * ```ddcutil detect``` to see all connected displays
 
-#### examples
+#### examples:
 ```./brightctl.sh 50 600 1```
 * changes Display 1 brightness to 50 over 600 seconds (10 mins)
 
@@ -56,19 +56,22 @@ monitor that supports VCP feature code 0x10 (brightness)
 * ```ddcutil getvcp 10 --display 1``` to verify that ddcutil can read display brightness
 
 ## install
+* brightctl.sh is a standalone utility that depends on ddcutil
+
+#### install script (auto):
 * Run ```./install.sh```
   
 #### manual installation:
-* copy brightctl.sh and run_brightctl.sh to `~/.local/bin` and make executable (chmod 755)
-* copy files in systemd folder to your local user systemd folder `~/.config/systemd/user` and set permissions (chmod 644)
-* enable systemd units as user: 
+* copy brightctl.sh and run_brightctl.sh from scripts/ to `~/.local/bin` and make executable (chmod 755)
+* copy files in this systemd folder to your local user's systemd folder `~/.config/systemd/user` and set permissions (chmod 644)
+* enable systemd timers and helper as user: 
 ```
 systemctl --user daemon-reload
 systemctl --user enable brightctl-day.timer brightctl-night.timer brightctl-session.service
 systemctl --user start brightctl-day.timer brightctl-night.timer
 ```
-#### uninstall
-* disable/remove systemd units and script files
+#### uninstall:
+* disable and remove systemd units, and remove script files
 ```
 systemctl --user disable brightctl-day.timer brightctl-night.timer brightctl-session.service
 systemctl --user daemon-reload
@@ -76,12 +79,16 @@ rm ~/.config/systemd/user/brightctl*
 rm ~/.local/bin/*brightctl.sh
 ```
 
-## program behavior and control
-##### brightctl.sh
+## program behavior and control:
+##### brightctl.sh:
+main script that uses ddcutil to change display brightness
+
 ```delay=30``` 
 * 30 seconds between brightness change steps for less noticeable screen flickering
+ 
 ```sleep 5``` 
-* sleeps after ddcutil commands due to ddc delays
+* sleeps 5 seconds after ddcutil commands due to ddc delays
+
 morning and night times and brightness levels:
  * set in .timer unit files and run_brightctl.sh
  * currently set to 100 at 08:00 and 33 at 20:00
@@ -90,8 +97,8 @@ defaults if no time or display arguments given:
 * time = 0
 * display = 1 (edit default=1) in brightctl.sh
 
-#### run_brightctl.sh
-* script to handle setting brightness at boot or resuming from suspend
+#### run_brightctl.sh:
+* helper script to handle setting brightness at boot or resuming from suspend
 * current values: 8am brightness = 100, 8pm brightness = 33, 
 * behavior: immediately sets display brightness to 100 if ran after 8am (booting up PC in morning)
 * immediately sets display brightness to 33 if ran after 8pm (resuming PC from sleep at night)
